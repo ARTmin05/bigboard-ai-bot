@@ -8,6 +8,14 @@ An AI-powered Telegram assistant that answers customer questions, estimates pric
 ![aiogram](https://img.shields.io/badge/aiogram-3-26A5E4?logo=telegram&logoColor=white)
 ![Gemini](https://img.shields.io/badge/Google_Gemini-API-8E75B2?logo=googlegemini&logoColor=white)
 
+## 📸 Screenshots
+
+| AI answers free-form questions | Step-by-step lead form | Manager gets the lead instantly |
+|---|---|---|
+| ![AI answer](screenshots/ai-answer.png) | ![Lead form](screenshots/lead-form.png) | ![Notification](screenshots/notification.png) |
+
+<p align="center"><img src="screenshots/bot-profile.png" width="260" alt="Bot profile"></p>
+
 ## ✨ Features
 
 - 🤖 **AI consultant** — understands free-form questions ("how much is a billboard near the metro for 2 months?") and answers strictly based on the price list and FAQ, without making things up
