@@ -5,6 +5,9 @@ import html
 import logging
 import os
 import re
+import sys
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.client.default import DefaultBotProperties
@@ -266,7 +269,17 @@ async def main():
     if not BOT_TOKEN:
         raise SystemExit("Не найден BOT_TOKEN. Скопируйте .env.example в .env и вставьте токен.")
 
-    logging.basicConfig(level=logging.INFO)
+    # Лог пишется в bot.log; в консоль — только если она есть (при фоновом запуске её нет)
+    handlers = [RotatingFileHandler(
+        Path(__file__).parent / "bot.log", maxBytes=1_000_000, backupCount=3, encoding="utf-8"
+    )]
+    if sys.stderr:
+        handlers.append(logging.StreamHandler())
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+        handlers=handlers,
+    )
     bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
     await dp.start_polling(bot)
 
